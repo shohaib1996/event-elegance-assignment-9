@@ -46,7 +46,7 @@ const Gallery = () => {
     }
 
     return (
-        <div className='max-w-3xl mx-auto flex flex-col items-center mt-12 mb-12'>
+        <div className='max-w-3xl mx-auto flex flex-col items-center mt-12 mb-12' data-aos="fade-down">
             <h1 className="font-bold text-5xl mb-5 ">Gallery</h1>
             
             <div className="carousel carousel-end  p-4 space-x-4 rounded-box">
