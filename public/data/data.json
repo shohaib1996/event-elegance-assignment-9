@@ -1,0 +1,45 @@
+[
+    {
+      "id": 1,
+      "name": "Wedding",
+      "image": "https://i.ibb.co/fMWptn2/wedding.png",
+      "price": "10000",
+      "short_description": "Celebrate the union of two hearts in a grand and elegant wedding ceremony. Our wedding package includes everything you need to make your special day unforgettable, from stunning decor to gourmet catering."
+    },
+    {
+      "id": 2,
+      "name": "Birthday Party",
+      "image": "https://i.ibb.co/xFBVbR6/birth-party.png",
+      "price": "500",
+      "short_description": "Host a lively and fun-filled birthday party for your loved ones. Our birthday party package offers a fantastic venue, entertainment, and delicious food, ensuring a memorable celebration."
+    },
+    {
+      "id": 3,
+      "name": "Anniversary",
+      "image": "https://i.ibb.co/PcPM0PB/engagement-party.png",
+      "price": "1500",
+      "short_description": "Rekindle your love and cherish the years together with a romantic anniversary celebration. Our anniversary package includes a candlelit dinner, live music, and a beautiful ambiance."
+    },
+    {
+      "id": 4,
+      "name": "Engagement Party",
+      "image": "https://i.ibb.co/PcPM0PB/engagement-party.png",
+      "price": "2000",
+      "short_description": "Celebrate the beginning of a beautiful journey with an enchanting engagement party. Our package includes a stunning venue, engagement photo shoot, and delicious hors d'oeuvres."
+    },
+    {
+      "id": 5,
+      "name": "Retirement Party",
+      "image": "https://i.ibb.co/yFQYkRk/retirement-party.png",
+      "price": "800",
+      "short_description": "Bid farewell to a well-deserved retirement with a heartwarming retirement party. Our package includes speeches, awards, and a delightful retirement cake."
+    },
+    {
+      "id": 6,
+      "name": "Baby Shower",
+      "image": "https://i.ibb.co/RYwqJD8/baby-shower.png",
+      "price": "300",
+      "short_description": "Welcome a new life with joy and excitement at a charming baby shower. Our package offers games, baby-themed decorations, and a special gift for the mom-to-be."
+    }
+  ]
+  

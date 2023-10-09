@@ -1,0 +1,27 @@
+[
+    {
+        "id": "slide1",
+        "imageSrc": "https://i.ibb.co/X2vBRrV/wedding-gallery.png"
+    },
+    {
+        "id": "slide2",
+        "imageSrc": "https://i.ibb.co/3cTLbtZ/engagement-gallery.png"
+    },
+    {
+        "id": "slide3",
+        "imageSrc": "https://i.ibb.co/YRWtM8k/party-gallery.png"
+    },
+    {
+        "id": "slide4",
+        "imageSrc": "https://i.ibb.co/z5vS4Yd/birthday-gallery.png"
+    },
+    {
+        "id": "slide5",
+        "imageSrc": "https://i.ibb.co/mNybn9W/celebration-gallery.png"
+    },
+    {
+        "id": "slide6",
+        "imageSrc": "https://i.ibb.co/zQWNPJx/retirement-gallery.png"
+    }
+]
+
