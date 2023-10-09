@@ -1,8 +1,30 @@
-# React + Vite
+# website Name : eventElegance
+# website Live link : 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Feature 
+# 1 -- user Authentication:
 
-Currently, two official plugins are available:
+Implement user registration and login functionality to allow users to create accounts and log in.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# 2 -- Contact Form:
+
+Create a contact form that allows users to send inquiries, feedback, or messages to creator team.
+
+# 3 -- Google Sign-In:
+
+Integrate Google Sign-In to allow users to log in with their Google accounts.
+
+# 4 -- Card Details Page:
+
+Create a page where users can view detailed information about a selected card.
+Retrieve card details from your database or localStorage and display them on this page.
+# 5 -- Wishlist or Cart:
+
+Allow users to add cards to a wishlist or shopping cart.
+Store the selected card items in localStorage .
+Implement features like adding/removing items and calculating the total price.
+
+
+
+
+

@@ -2,8 +2,7 @@ import { useContext, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
-import { sendPasswordResetEmail } from "firebase/auth";
-import auth from "../../firebase/firebase.config";
+
 
 
 
@@ -49,28 +48,7 @@ const Login = () => {
             })
 
     }
-    const handleForgetPassword = () => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const email = emailRef.current.value;
-
-        if (!email) {
-            toast.error('Please Enter an Email Address');
-        } else if (!email.match(emailRegex)) {
-            toast.error("Please Enter a Valid Email Address");
-        } else {
-
-            sendPasswordResetEmail(auth, email)
-                .then(() => {
-                    toast.success("Check Your Email Address for Password Reset Instructions");
-                })
-                .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    console.log(errorCode, errorMessage);
-                    // Handle other error cases if necessary
-                });
-        }
-    }
+    
 
 
     const handleSocial = (media) => {
@@ -100,7 +78,7 @@ const Login = () => {
                                 <label className="text-black font-bold">Remember Me</label>
                             </div>
 
-                            <button onClick={handleForgetPassword} className="text-fuchsia-600 font-bold">Forgot Password</button>
+                            
                         </div>
                         {
                             registerError && <span className="text-red-700 text-center mt-5 mb-5">{registerError}</span>
