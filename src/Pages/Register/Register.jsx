@@ -62,10 +62,12 @@ const Register = () => {
 
                 }).catch(error => {
                     console.error(error);
+                    
                 })
             })
             .catch(error => {
                 console.error(error);
+                toast.error("Please Login with valid Email and password")
             })
 
 
