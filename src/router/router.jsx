@@ -9,6 +9,7 @@ import About from "../Pages/About/About";
 import Contact from "../Pages/Contact/Contact";
 import CardDetails from "../components/CardDetails/CardDetails";
 import Cart from "../Cart/Cart";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 
 
@@ -38,16 +39,16 @@ const router = createBrowserRouter([
             },
             {
                 path: "/contact",
-                element: <Contact></Contact>
+                element: <PrivateRoute><Contact></Contact></PrivateRoute>
             },
             {
                 path: "/service/:id",
-                element: <CardDetails></CardDetails>,
+                element: <PrivateRoute><CardDetails></CardDetails></PrivateRoute>,
                 loader: ()=> fetch('/data/data.json')
             },
             {
                 path: "/cart",
-                element: <Cart></Cart>
+                element: <PrivateRoute><Cart></Cart></PrivateRoute>
             }
         ]
     }
