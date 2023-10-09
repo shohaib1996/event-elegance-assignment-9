@@ -81,7 +81,7 @@ const Navbar = () => {
                     user ? 
                     <div className="navbar-end space-x-3">
                         <p className="font-bold">{user.displayName || user.email}</p>
-                        <img className="w-12 h-12 rounded-full hidden lg:flex" src={user.image} alt="" />
+                        <img className="w-12 h-12 rounded-full hidden lg:flex" src={user.photoURL} alt="" />
                         <button onClick={handleLogOut} className="btn font-bold text-white bg-fuchsia-600">Log Out</button>
                     </div> : 
                     <div className="navbar-end">

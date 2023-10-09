@@ -3,6 +3,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { updateProfile } from "firebase/auth";
+import swal from 'sweetalert';
 
 
 
@@ -28,7 +29,7 @@ const Register = () => {
         } else if (!/[A-Z]/.test(password)) {
             setRegisterError('Password do not have a capital letter');
             return
-        } else if (!/[a-z]/.test(password)) {
+        }  else if (!/[!@#$%^&*]/.test(password)) {
             setRegisterError('Password do not have a special character');
             return
         } else if (!isChecked) {
@@ -42,6 +43,7 @@ const Register = () => {
                 e.target.reset()
                 toast.success("User Created SuccessFully")
                 toast.success("Please Login Now For Better Experience")
+                swal("Good Job", "Please Login now!", "success");
 
 
                 updateProfile(user, {
@@ -97,7 +99,7 @@ const Register = () => {
                             registerError && <span className="text-red-700 text-center mt-5 mb-5">{registerError}</span>
                         }
                         <div>
-                            <button type="submit" className="w-full btn mt-2 bg-fuchsia-600 font-bold text-black">Create an account</button>
+                            <button type="submit" className="w-full btn mt-2 bg-fuchsia-600 font-bold text-white">Create an account</button>
                         </div>
                     </form>
 

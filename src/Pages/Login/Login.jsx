@@ -11,7 +11,7 @@ const Login = () => {
     const { signInUser, signInWithGoogle } = useContext(AuthContext)
 
 
-    const [registerError, setRegisterError] = useState('')
+    const [loginError, setLoginError] = useState('')
     const navigate = useNavigate()
     const location = useLocation()
     const emailRef = useRef(null)
@@ -21,13 +21,13 @@ const Login = () => {
         const email = form.get("email")
         const password = form.get("password")
         if (password.length < 6) {
-            setRegisterError("Password is less than 6 characters")
+            setLoginError("Password is less than 6 characters")
             return
         } else if (!/[A-Z]/.test(password)) {
-            setRegisterError('Password do not have a capital letter');
+            setLoginError('Password do not have a capital letter');
             return
-        } else if (!/[a-z]/.test(password)) {
-            setRegisterError('Password do not have a special character');
+        } else if (!/[!@#$%^&*]/.test(password)) {
+            setLoginError('Password do not have a special character');
             return
         }
 
@@ -43,7 +43,9 @@ const Login = () => {
             })
             .catch(error => {
                 console.log(error);
-                toast.error("Please sign in with valid email and password")
+                toast.error("Password doesn't match")
+                toast.error("Email doesn't match")
+                
 
             })
 
@@ -78,10 +80,10 @@ const Login = () => {
                                 <label className="text-black font-bold">Remember Me</label>
                             </div>
 
-                            
+                            <a  className="text-fuchsia-600 font-bold">Forgot Password</a>
                         </div>
                         {
-                            registerError && <span className="text-red-700 text-center mt-5 mb-5">{registerError}</span>
+                            loginError && <span className="text-red-700 text-center mt-5 mb-5">{loginError}</span>
                         }
                         <div>
                             <button type="submit" className="w-full mt-4 btn bg-fuchsia-600 font-bold text-white">Login</button>
