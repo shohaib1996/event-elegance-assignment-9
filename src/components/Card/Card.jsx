@@ -7,7 +7,7 @@ const Card = ({ card }) => {
 
         <div className="w-full  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
 
-            <div className='' data-aos="flip-right">
+            <div className='' data-aos="flip-right" data-aos-duration="3000">
                 <img className=" rounded-t-lg h-[300px]" src={image} alt="product image" />
             </div>
 
