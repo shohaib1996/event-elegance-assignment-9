@@ -43,6 +43,7 @@ const Register = () => {
                 toast.success("User Created SuccessFully")
                 toast.success("Please Login Now For Better Experience")
 
+
                 updateProfile(user, {
                     displayName: name, photoURL: photo
                 }).then(() => {

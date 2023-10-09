@@ -13,7 +13,7 @@ const Contact = () => {
 
     }
     return (
-        <div className="max-w-screen-md mx-auto h-[90vh] mt-12">
+        <div className="max-w-screen-md mx-auto h-[90vh] mt-12 p-3 lg:p-0">
             <form  onSubmit={handleContact} className="mb-6 text-xl font-bold">
                 <div className="mb-6">
                     <label

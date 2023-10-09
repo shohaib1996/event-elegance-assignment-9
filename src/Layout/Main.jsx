@@ -12,7 +12,9 @@ const Main = () => {
                 reverseOrder={false}
             />
             <Navbar></Navbar>
+
             <Outlet></Outlet>
+
             <Footer></Footer>
         </div>
     );

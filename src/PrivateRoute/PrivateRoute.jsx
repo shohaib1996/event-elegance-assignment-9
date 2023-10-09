@@ -6,13 +6,14 @@ import { ColorRing } from "react-loader-spinner";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
 
+
 const PrivateRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext)
     const location = useLocation()
     console.log(location);
     if (loading) {
         return (
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center mt-20 mb-72">
                 <ColorRing
                     visible={true}
                     height="180"

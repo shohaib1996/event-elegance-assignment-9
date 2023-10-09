@@ -22,7 +22,7 @@ const Home = () => {
             <Gallery></Gallery>
             <div id="card">
                 <h1 className="font-bold text-5xl text-center mb-12">Our Services</h1>
-                <div className="max-w-screen-xl mx-auto grid gap-8 grid-cols-1 lg:grid-cols-3 ">
+                <div className="max-w-screen-xl mx-auto grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2 lg:p-0">
                     {
                         cards.map(card => <Card key={card.id} card={card}></Card>)
                     }
@@ -32,7 +32,7 @@ const Home = () => {
 
             <div className="mt-20">
                 <h1 className="font-bold text-5xl text-center mb-12">Testimonial</h1>
-                <div className="max-w-screen-lg mx-auto  grid grid-col-2 lg:grid-cols-4 gap-5">
+                <div className="max-w-screen-lg mx-auto  grid grid-cols-1 lg:grid-cols-4 gap-5 p-2 lg:p-0">
                     {
                         testimonial.map(person => <TestimonialCard key={person.id} person={person}></TestimonialCard>)
                     }

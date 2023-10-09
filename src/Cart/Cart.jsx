@@ -13,14 +13,14 @@ const Cart = () => {
     console.log(eventCards);
     const totalPrice = eventCards.reduce((prev, curr) => prev + Number(curr.price), 0)
     return (
-        <div className="max-w-screen-xl mx-auto mt-12 mb-12 flex gap-8 justify-center">
-            <div className="w-2/3 grid gap-8 grid-cols-1 lg:grid-cols-2">
+        <div className="max-w-screen-xl mx-auto mt-12 mb-12 flex gap-8 justify-center flex-col-reverse lg:flex-row">
+            <div className="w-full lg:w-2/3  grid gap-8 grid-cols-1 lg:grid-cols-2 p-3 lg:p-0">
                 {
                     eventCards.map(card => <Card key={card.id} card={card}></Card>)
                 }
 
             </div>
-            <div className="w-1/3 p-10">
+            <div className="w-full lg:w-1/3 p-10">
                 <h1 className="text-3xl font-bold text-center">Events</h1>
                 <div className=' mt-8 border-b-2 border-b-gray-600 pb-3'>
                     {
