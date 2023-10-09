@@ -1,51 +1,107 @@
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { useContext, useState } from "react";
+import toast from "react-hot-toast";
+import { updateProfile } from "firebase/auth";
 
 
 
 
 
 const Register = () => {
-   
-    // console.log(createUser);
+    const { createUser, logOut, signInWithGoogle } = useContext(AuthContext)
+    const [registerError, setRegisterError] = useState('')
     const navigate = useNavigate()
     const handleRegister = (e) => {
         e.preventDefault()
         const form = new FormData(e.currentTarget)
-        const firstName = form.get("firstName")
-        const lastName = form.get("lastName")
-        const name = firstName + " " + lastName
+
+        const name = form.get("name")
         const email = form.get("email")
         const password = form.get("password")
-        const confirmPassword = form.get("confirmPassword")
         const photo = form.get("photo")
         const isChecked = form.get("terms")
-        console.log(firstName, email,name, lastName, password, confirmPassword, photo, isChecked);
-        
+        console.log(email, name, password, photo, isChecked);
+        if (password.length < 6) {
+            setRegisterError("Password is less than 6 characters")
+            return
+        } else if (!/[A-Z]/.test(password)) {
+            setRegisterError('Password do not have a capital letter');
+            return
+        } else if (!/[a-z]/.test(password)) {
+            setRegisterError('Password do not have a special character');
+            return
+        } else if (!isChecked) {
+            setRegisterError('Please Agree with terms and condition')
+            return
+        }
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                e.target.reset()
+                toast.success("User Created SuccessFully")
+                toast.success("Please Login Now For Better Experience")
+
+                updateProfile(user, {
+                    displayName: name, photoURL: photo
+                }).then(() => {
+                    toast.success('User Profile Updated');
+
+                    logOut()
+                        .then(() => {
+                            console.log('Log Out successfully')
+                            navigate("/login")
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        })
+
+                }).catch(error => {
+                    console.error(error);
+                })
+            })
+            .catch(error => {
+                console.error(error);
+            })
+
+
+    }
+    const handleSocial = (media) => {
+        media()
+            .then(result => {
+                console.log(result.user)
+                navigate("/")
+            })
+            .catch(error => {
+                console.error(error);
+            })
     }
     return (
         <div className="mb-12">
-            
+
             <div className="max-w-2xl mx-auto border-2 border-[#ABABAB] mt-5">
                 <div className="p-8">
                     <h1 className="text-2xl font-bold mb-10">Register</h1>
                     <form onSubmit={handleRegister}>
-                        <input type="text" name="firstName" placeholder="First Name" className="border-b-2 w-full p-3 text-black font-bold mb-8" />
-                        <input type="text" name="lastName" placeholder="Last Name" className="border-b-2 w-full p-3 text-black font-bold mb-8" />
+                        <input type="text" name="name" placeholder=" Name" className="border-b-2 w-full p-3 text-black font-bold mb-8" />
                         <input type="email" name="email" placeholder="Enter Email" className="border-b-2 w-full p-3 text-black font-bold mb-8" />
                         <input type="password" name="password" placeholder="Password" className="border-b-2 w-full p-3 text-black font-bold mb-8" />
-                        <input type="password" name="confirmPassword" placeholder="Confirm Password" className="border-b-2 w-full p-3 text-black font-bold mb-8" />
                         <input type="text" name="photo" placeholder="Photo" className="border-b-2 w-full p-3 text-black font-bold mb-8" />
                         <div className="flex">
                             <input type="checkbox" name="terms" className="border-b-2 mr-5 mb-5 p-3 text-black font-bold" />
-                            <label className="text-black font-bold mb-5">I accept the <span className="text-[#F9A51A] underline">Terms and Conditions</span></label>
+                            <label className="text-black font-bold mb-5">I accept the <span className="text-fuchsia-600 underline">Terms and Conditions</span></label>
                         </div>
+                        {
+                            registerError && <span className="text-red-700 text-center mt-5 mb-5">{registerError}</span>
+                        }
                         <div>
-                            <button type="submit" className="w-full btn bg-[#F9A51A] font-bold text-black">Create an account</button>
+                            <button type="submit" className="w-full btn mt-2 bg-fuchsia-600 font-bold text-black">Create an account</button>
                         </div>
                     </form>
 
 
-                    <p className="font-bold text-center mt-4">Already have an account? <Link to="/login"><span className="text-[#F9A51A]">Login</span></Link></p>
+                    <p className="font-bold text-center mt-4">Already have an account? <Link to="/login"><span className="text-fuchsia-600">Login</span></Link></p>
                 </div>
             </div>
             <div className="max-w-2xl mx-auto">
@@ -53,7 +109,7 @@ const Register = () => {
                     Or
                 </div>
                 <div className="space-y-5">
-                    <button type="button" className="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
+                    <button onClick={()=> handleSocial(signInWithGoogle)} type="button" className="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
                         <svg className="w-4 h-auto" width="46" height="47" viewBox="0 0 46 47" fill="none">
                             <path d="M46 24.0287C46 22.09 45.8533 20.68 45.5013 19.2112H23.4694V27.9356H36.4069C36.1429 30.1094 34.7347 33.37 31.5957 35.5731L31.5663 35.8669L38.5191 41.2719L38.9885 41.3306C43.4477 37.2181 46 31.1669 46 24.0287Z" fill="#4285F4" />
                             <path d="M23.4694 47C29.8061 47 35.1161 44.9144 39.0179 41.3012L31.625 35.5437C29.6301 36.9244 26.9898 37.8937 23.4987 37.8937C17.2793 37.8937 12.0281 33.7812 10.1505 28.1412L9.88649 28.1706L2.61097 33.7812L2.52296 34.0456C6.36608 41.7125 14.287 47 23.4694 47Z" fill="#34A853" />
@@ -62,10 +118,7 @@ const Register = () => {
                         </svg>
                         Sign up with Google
                     </button>
-                    <button type="button" className="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
-                        
-                        Sign up with Google
-                    </button>
+
                 </div>
             </div>
 
