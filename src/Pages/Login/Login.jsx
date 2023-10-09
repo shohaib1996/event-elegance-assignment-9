@@ -39,13 +39,13 @@ const Login = () => {
                                 <input type="checkbox" name="terms" className="border-b-2 mr-5 p-3 text-black font-bold" />
                                 <label className="text-black font-bold">Remember Me</label>
                             </div>
-                            <button  className="text-[#F9A51A] font-bold">Forgot Password</button>
+                            <button  className="text-fuchsia-600 font-bold">Forgot Password</button>
                         </div>
                         <div>
-                            <button className="w-full btn bg-[#F9A51A] font-bold text-black">Login</button>
+                            <button className="w-full btn bg-fuchsia-600 font-bold text-white">Login</button>
                         </div>
                     </form>
-                    <p className="font-bold text-center mt-4">Don’t have an account? <Link to="/register"><span className="text-[#F9A51A]">Create an account</span></Link></p>
+                    <p className="font-bold text-center mt-4">Don’t have an account? <Link to="/register"><span className="text-fuchsia-600">Create an account</span></Link></p>
                 </div>
             </div>
             <div className="max-w-2xl mx-auto">
